@@ -1,0 +1,26 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+    int n = nums.length;
+    HashMap<Integer, Integer> map = new HashMap<>();
+
+    // Count frequency of each number
+    for (int num : nums) {
+        map.put(num, map.getOrDefault(num, 0) + 1);
+    }
+
+    int duplicated = 0;
+    int missing = 0;
+
+    // Check for duplicate and missing
+    for (int i = 1; i <= n; i++) {
+        if (map.get(i) == null) {
+            missing = i;         // not in map → missing
+        } else if (map.get(i) == 2) {
+            duplicated = i;      // count == 2 → duplicated
+        }
+    }
+
+    return new int[]{duplicated, missing};
+}
+
+}
