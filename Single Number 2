@@ -1,5 +1,25 @@
 class Solution {
     public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i = 1; i < nums.length-1; i+=3) {
+            if(nums[i] != nums[i-1]) {
+                return nums[i-1];
+            }
+        }
+        return nums[nums.length-1];
+    }
+}
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int singleNumber(int[] nums) {
         int ans = 0;
         for (int bitIdx = 0; bitIdx < 32; bitIdx++) {
             int count = 0;
