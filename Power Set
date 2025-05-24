@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public List<String> AllPossibleStrings(String s) {
+        int n = s.length();
+        List<String> result = new ArrayList<>();
+        
+        int total = 1 << n; // 2^n total subsets
+
+        for (int i = 1; i < total; i++) { // Start from 1 to skip empty string
+            StringBuilder sb = new StringBuilder();
+
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) != 0) {
+                    sb.append(s.charAt(j));
+                }
+            }
+
+            result.add(sb.toString());
+        }
+
+        Collections.sort(result); // Lexicographical order
+        return result;
+    }
+}
