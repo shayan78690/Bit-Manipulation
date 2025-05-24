@@ -1,5 +1,27 @@
 class Solution {
     public int singleNumber(int[] nums) {
+        int ones = 0;
+        int twos = 0;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            ones = (nums[i] ^ ones) & ~twos;
+            twos = (nums[i] ^ twos) & ~ones;
+        }
+        return ones;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int singleNumber(int[] nums) {
         Arrays.sort(nums);
         for(int i = 1; i < nums.length-1; i+=3) {
             if(nums[i] != nums[i-1]) {
