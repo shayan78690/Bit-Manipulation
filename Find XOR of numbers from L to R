@@ -1,17 +1,13 @@
 class Solution {
     public static int findXOR(int l, int r) {
-        return (find(l - 1) ^ find(r));
+        return xorUpto(l - 1) ^ xorUpto(r);
     }
     
-    public static int find(int n) {
+   public static int xorUpto(int n) {
         int mod = n % 4;
-        if(mod == 1) {
-            return 1;
-        } else if(n == 2) {
-            return n+1;
-        } else if(n == 3) {
-            return 0;
-        } 
-        return n;
-    } 
+        if(mod == 0) return n;
+        else if(mod == 1) return 1;
+        else if(mod == 2) return n + 1;
+        else return 0;
+    }
 }
