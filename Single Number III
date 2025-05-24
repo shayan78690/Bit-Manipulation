@@ -1,4 +1,26 @@
+class Solution {
+    public int[] singleNumber(int[] nums) {
+            int xor = 0;
+    for (int num : nums) {
+        xor ^= num;
+    }
 
+    // Step 2: Find any set bit in xor (rightmost bit)
+    int diffBit = xor & (-xor);
+
+    // Step 3: Divide into two groups & XOR separately
+    int a = 0, b = 0;
+    for (int num : nums) {
+        if ((num & diffBit) == 0) {
+            a ^= num;
+        } else {
+            b ^= num;
+        }
+    }
+
+    return new int[] {a, b};
+    }
+}
 
 
 
